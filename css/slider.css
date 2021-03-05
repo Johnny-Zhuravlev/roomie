@@ -1,0 +1,16 @@
+.slider__img {
+    margin: 0 auto;
+}
+
+.slider2 {
+    margin-bottom: 286px;
+}
+
+
+
+/* Media Queries */
+@media (min-width: 1441px) {
+    .slider__img {
+        width: 100%;
+    }
+}

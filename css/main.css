@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url(../css/header.css);
+@import url(../css/burger-menu.css);
+@import url(../css/info.css);
+@import url(../css/showroom.css);
+@import url(../css/partners.css);
+@import url(../css/slider.css);
+@import url(../css/benefits.css);
+@import url(../css/reviews.css);
+@import url(../css/about.css);
+@import url(../css/marketing.css);
+@import url(../css/footer.css);
+
+body {
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Roboto', sans-serif;
+    color: #000;
+}
+h2,
+h3,
+h4 {
+    font-weight: 400;
+}
+
+li {
+    line-height: 20px;
+}
