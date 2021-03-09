@@ -18,7 +18,7 @@
     transition: all .3s linear;
 }
 .footer__logo:hover .footer__logo--img {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 .footer__nav--wrapper {
     width: 28.785%;
@@ -140,21 +140,63 @@ input[type="text"] {
 input[type="text"]:hover {
     border-color: #fff;
 }
-.country-list {
-    display: block;
+/* Country list */
+.select__footer {
+    display: flex;
+    width: 28%;
     margin-left: 224px;
     margin-bottom: 56px;
-    padding-right: 20px;
     font-size: 14px;
     line-height: 21px;
     text-align: right;
     color: rgba(255, 255, 255, 0.5);
-    background: transparent url(../img/footer/arrow.svg) 100% 50% no-repeat;
     cursor: pointer;
-    border: none;
-    appearance: none;
-    outline: none;
+
+    position: relative;
 }
+.select__footer.active .select__footer--body {
+    display: flex;
+    margin-top: 8px;
+    padding: 0 5px;
+    width: 327px;
+    margin-left: -224px;
+}
+.select__footer.active .select__footer--arrow {
+    transform: rotate(-180deg);
+}
+.select__footer--top {
+    display: flex;
+    cursor: pointer;
+
+    transition: all .3s linear;
+}
+.select__footer--current,
+.select__footer--item {
+    font-size: 12px;
+    line-height: 20px;
+    color: #aaa;
+    letter-spacing: 1px;
+}
+.select__footer--arrow {
+    margin-left: 2.5px;
+    display: flex;
+    flex-shrink: 0;
+}
+.select__footer--body {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border: 1px solid #aaa;
+}
+.select__footer--item {
+    margin-right: 5px;
+}
+.select__footer--item:last-child {
+    margin-right: 0;
+}
+
 .checkbox {
     width: 28px;
     height: 26px;
@@ -186,13 +228,17 @@ input[type="text"]:hover {
     text-transform: uppercase;
     cursor: pointer;
 }
-.checkbox:checked + .form__text::after {
+.form__text::after {
     content: '';
     position: absolute;
     top: 238px;
     left: -42px;
     width: 14px;
     height: 12px;
+    background: transparent;
+    transition: all .25s linear;
+}
+.checkbox:checked + .form__text::after {
     background: rgba(255, 255, 255, 0.4);
 }
 .form__btn {
@@ -300,11 +346,15 @@ input[type="text"]:hover {
 
 
 @media (min-width: 1530px) {
+    .footer {
+        padding-left: 140px;
+        padding-right: 120px;
+    }
     .footer__logo {
-        margin-right: 80px;
+        margin-right: 90px;
     }
     .footer__nav--wrapper {
-        width: 33%;
+        width: 35%;
     }
     ul.footer__nav {
         margin-bottom: 30px;
@@ -312,9 +362,14 @@ input[type="text"]:hover {
     .footer__nav--title,
     .footer__address--title,
     .footer__socials--title,
-    .form__title,
-    .country-list {
+    .form__title {
         font-size: 16px;
+    }
+    .select__footer {
+        width: 30%;
+    }
+    .footer__form {
+        width: 28%;
     }
     .country-list {
         margin-left: 211px;
@@ -324,6 +379,12 @@ input[type="text"]:hover {
 
 
 @media (min-width: 1680px) {
+    .footer {
+        padding-left: 160px;
+    }
+    .footer__logo {
+        margin-right: 110px;
+    }
     .footer__nav--wrapper {
         width: 40%;
     }
@@ -334,20 +395,56 @@ input[type="text"]:hover {
     .footer__nav--title:first-child {
         margin-bottom: 20px;
     }
+    .footer__form {
+        width: 25%;
+    }
 }
 
 
 
 @media (min-width: 1920px) {
+    .footer {
+        padding-left: 200px;
+        padding-right: 150px;
+    }
     .footer__logo {
         margin-right: 150px;
     }
     .footer__nav--wrapper {
+        width: 42%;
         margin-right: 60px;
+    }
+    .footer__nav--title,
+    .footer__address--title,
+    .footer__socials--title,
+    .form__title,
+    .country-list {
+        font-size: 17px;
+    }
+    .footer__nav--link {
+        font-size: 16px;
     }
     .footer__socials {
         width: 10%;
         margin-right: 60px;
+    }
+    .footer__form {
+        width: 22%;
+    }
+    .country-list {
+        margin-left: 202px;
+    }
+}
+
+
+
+@media (min-width: 2300px) {
+    .footer {
+        padding-left: 300px;
+        padding-right: 100px;
+    }
+    .footer__form {
+        width: 18%;
     }
 }
 
@@ -396,6 +493,9 @@ input[type="text"]:hover {
         width: 28%;
         margin-right: 50px;
     }
+    .select__footer {
+        width: 40%;
+    }
     .form__btn {
         margin-left: 0;
     }
@@ -433,29 +533,77 @@ input[type="text"]:hover {
         margin-right: 0;
     }
     .footer__form {
-        width: 33%;
+        width: 35%;
     }
     input[type="text"] {
         width: 89.381%;
     }
-    .country-list {
+    .select__footer {
         margin-left: 0;
+    }
+    .select__footer.active .select__footer--body {
+        justify-content: space-between;
+        margin-left: 0;
+        margin-top: 5px;
+        width: 223.45%;
+    }
+    .select__footer--item {
+        margin-right: 0;
+        font-size: 11px;
+        letter-spacing: 0.5px;
+    }
+}
+
+
+
+@media (max-width: 900px) {
+    .footer {
+        padding: 50px 30px 40px;
+    }
+    .footer__nav--wrapper {
+        width: 30%;
+        margin-right: 25px;
+    }
+    .footer__socials {
+        margin-right: 30px;
+    }
+    .footer__form {
+        width: 37%;
+    }
+    .checkbox {
+        width: 24px;
+        height: 22px;
+        top: 229px;
+        left: -43px;
+    }
+    .checkbox + .form__text::before {
+        width: 26px;
+        height: 24px;
+        top: 231px;
+        left: -40px;
+    }
+    .form__text::after {
+        width: 14px;
+        height: 12px;
+        top: 237px;
+        left: -34px;
+    }
+    .footer__link--scrollUP {
+        bottom: 90px;
+        right: -55px;
     }
 }
 
 
 
 @media (max-width: 850px) {
-    .footer {
-        padding: 50px 30px 40px;
-    }
     .footer__logo--img {
         width: 60px;
         height: 60px;
     }
     .footer__nav--wrapper {
         width: 40%;
-        margin-right: 75px;
+        margin-right: 55px;
     }
     .footer__nav--title,
     .footer__address--title,
@@ -475,20 +623,30 @@ input[type="text"]:hover {
     .footer__form {
         width: 40%;
     }
-    input[type="text"] {
-        width: 89.381%;
+    .select__footer--item {
+        font-size: 10.5px;
     }
-    .country-list {
-        margin-left: 0;
+    input[type="text"] {
+        width: 91%;
     }
     .checkbox {
-        left: -45px;
+        width: 22px;
+        height: 20px;
+        top: 230px;
+        left: -35px;
     }
     .checkbox + .form__text::before {
-        left: -41px;
+        width: 22px;
+        height: 20px;
+        top: 233px;
+        left: -31px;
     }
-    .checkbox:checked + .form__text::after {
-        left: -34px;
+    .checkbox:checked + .form__text::after,
+    .form__text::after {
+        width: 12px;
+        height: 10px;
+        top: 238px;
+        left: -26px;
     }
     .form__text {
         margin-bottom: 50px;
@@ -517,7 +675,7 @@ input[type="text"]:hover {
         height: 55px;
     }
     .footer__nav--wrapper {
-        width: 35%;
+        width: 33%;
         margin-right: 0;
     }
     ul.footer__nav {
@@ -562,18 +720,21 @@ input[type="text"]:hover {
     input[type="text"] {
         width: 89.381%;
     }
-    .country-list {
-        margin-bottom: 40px;
-        font-size: 13px;
+    .select__footer--item {
+        letter-spacing: 0;
     }
     .checkbox {
-        top: 203px;
+        top: 217px;
+        left: -34px;
     }
     .checkbox + .form__text::before {
-        top: 206px;
+        top: 220px;
+        left: -30px;
     }
-    .checkbox:checked + .form__text::after {
-        top: 213px;
+    .checkbox:checked + .form__text::after,
+    .form__text::after {
+        top: 225px;
+        left: -25px;
     }
     .form__text {
         margin-bottom: 40px;
@@ -612,21 +773,11 @@ input[type="text"]:hover {
     .footer__form {
         width: 50%;
     }
-    .checkbox {
-        width: 22px;
-        height: 20px;
-        left: -35px;
+    input[type="text"] {
+        width: 100%;
     }
-    .checkbox + .form__text::before {
-        width: 22px;
-        height: 20px;
-        left: -31px;
-    }
-    .checkbox:checked + .form__text::after {
-        width: 12px;
-        height: 10px;
-        left: -26px;
-        top: 211px;
+    .select__footer.active .select__footer--body {
+        width: 250.25%;
     }
     .form__text {
         margin-bottom: 30px;
@@ -637,6 +788,15 @@ input[type="text"]:hover {
 
 
 @media (max-width: 568px) {
+    .footer__inner {
+        justify-content: center;
+    }
+    .footer__logo {
+        margin-right: 0;
+        position: absolute;
+        bottom: 30px;
+        left: 60px;
+    }
     .footer__logo--img {
         width: 45px;
         height: 45px;
@@ -654,32 +814,47 @@ input[type="text"]:hover {
     }
     .footer__socials {
         bottom: 162px;
+        left: 60px;
+    }
+    .footer__nav--wrapper {
+        width: 35%;
+    }
+    .footer__form {
+        width: 52%;
     }
     input[type="text"] {
         padding: 7.5px;
         font-size: 14px;
         line-height: 28px;
     }
-    .country-list {
-        font-size: 12px;
+    .select__footer {
+        margin-bottom: 45px;
+    }
+    .select__footer--current {
+        font-size: 10px;
+    }
+    .select__footer--arrow {
+        width: 10px;
+    }
+    .select__footer--item {
+        font-size: 10px;
     }
     .checkbox {
-        width: 22px;
-        height: 20px;
-        left: -35px;
-        top: 189px;
+        width: 18px;
+        height: 16px;
+        top: 193px;
+        left: -29px;
     }
     .checkbox + .form__text::before {
-        width: 22px;
-        height: 20px;
-        left: -31px;
-        top: 192px;
+        width: 20px;
+        height: 18px;
+        top: 195px;
+        left: -27px;
     }
-    .checkbox:checked + .form__text::after {
-        width: 12px;
-        height: 10px;
-        left: -26px;
-        top: 197px;
+    .checkbox:checked + .form__text::after,
+    .form__text::after {
+        top: 199px;
+        left: -23px;
     }
     .form__btn {
         font-size: 12px;
@@ -696,22 +871,7 @@ input[type="text"]:hover {
     }
     .footer__link--scrollUP::after {
         font-size: 16px;
-        right: -15px;
-    }
-}
-
-
-
-@media (max-width: 510px) {
-
-    .checkbox {
-        top: 205px;
-    }
-    .checkbox + .form__text::before {
-        top: 208px;
-    }
-    .checkbox:checked + .form__text::after {
-        top: 213px;
+        right: -16px;
     }
 }
 
@@ -741,17 +901,20 @@ input[type="text"]:hover {
     input[type="text"] {
         margin-bottom: 10px;
     }
+    .select__footer {
+        margin-bottom: 65px;
+    }
     .checkbox {
-        top: 157px;
-        left: -4px;
+        top: 181px;
+        left: -3px;
     }
     .checkbox + .form__text::before {
-        top: 160px;
+        top: 182px;
         left: 0;
     }
-    .checkbox:checked + .form__text::after {
-        top: 165px;
-        left: 5px;
+    .checkbox:checked + .form__text::after, .form__text::after {
+        top: 186px;
+        left: 4px;
     }
     .form__text {
         letter-spacing: 2px;
